@@ -11,7 +11,7 @@ const webhookHandlers = {
         orderid:data.id,
         email:data.receipt_email,
         name: data.shipping.name,
-        adress:data.shipping.address.line1,
+        address:data.shipping.address.line1,
         city:data.shipping.address.postal_code+"/"+data.shipping.address.city,
         order:JSON.parse(data.metadata.order),
         amount:data.amount_received/100
