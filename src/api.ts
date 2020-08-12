@@ -22,7 +22,7 @@ app.post(
     '/payments',
     runAsync (async ({ body }: Request, res: Response) => {
       res.send(
-        await createPaymentIntent(body.amount),
+        await createPaymentIntent(body.amount,body.metadata),
       );
     })
 )
