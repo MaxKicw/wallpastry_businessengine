@@ -5,7 +5,7 @@ import Stripe from 'stripe';
 const webhookHandlers = {
 
     'payment_intent.succeeded': async (data: Stripe.PaymentIntent) => {
-      console.log("Super hat geklappt"+data.object)
+      console.log("Super hat geklappt"+data)
     },
     'payment_intent.payment_failed': async (data: Stripe.PaymentIntent) => {
         console.log("Shit hat nicht geklappt")
