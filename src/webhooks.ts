@@ -7,14 +7,15 @@ const webhookHandlers = {
 
     'payment_intent.succeeded': async (data: Stripe.PaymentIntent) => {
       console.log("Super hat geklappt"+JSON.stringify(data.metadata));
+      let customer = JSON.parse(data.metadata.customer)
       axios.post('https://www.wallpastry.com/orders', {
         orderid:data.id,
-        email:data.receipt_email,
-        name: data.shipping.name,
-        address:data.shipping.address.line1,
-        city:data.shipping.address.postal_code+"/"+data.shipping.address.city,
-        order:JSON.parse(data.metadata.order),
-        amount:data.amount_received/100
+        email:customer.email,
+        name: customer.name,
+        address:customer.street,
+        city:customer.zip+"/"+customer.city,
+        order:data.metadata,
+        amount:data.amount_received/100,
       })
       .then(function (response) {
         console.log(response);
