@@ -22,14 +22,14 @@ app.post(
     '/payments',
     runAsync (async ({ body }: Request, res: Response) => {
       res.send(
-        await createPaymentIntent(body.amount)
+        await createPaymentIntent(body.amount,body.metadata)
       );
     })
 );
 
 app.post("/test",(req:Request,res:Response)=> {
     const amount = req.body.amount;
-    console.log("/test request")
+    console.log("/test request");
     res.status(200).send({with_tax:amount+7});
 })
 
