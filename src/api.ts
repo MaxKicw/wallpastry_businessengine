@@ -32,6 +32,10 @@ app.post("/test",(req:Request,res:Response)=> {
     res.status(200).send({with_tax:amount+7});
 })
 
+app.get('/hi', (req, res) => {
+  res.send('Hello World!')
+})
+
 app.post('/hooks',runAsync (handleStripeWebhook))
 
 
