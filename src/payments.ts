@@ -2,12 +2,11 @@ import {stripe} from './'
 
 //Create Paymentintent
 
-
-export async function createPaymentIntent(amount:number,metadata:string){
+export async function createPaymentIntent(amount:number,metadata){
     const paymentIntent = await stripe.paymentIntents.create({
         amount,
         currency:'eur',
-        metadata:JSON.parse(metadata),
+        metadata,
     })
     return paymentIntent;
 }
